@@ -1,3 +1,8 @@
+set :stage, :production
+role :app, %w{sweety@45.55.144.140}
+role :web, %w{sweety@45.55.144.140}
+role :db,  %w{sweety@45.55.144.140}
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

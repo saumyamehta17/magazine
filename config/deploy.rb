@@ -12,7 +12,7 @@ set :scm, :git
 
 # set :delayed_job_args, "-n 2"            # number of delayed job workers
 set :rvm_type, :user
-# set :rvm_ruby_string, '2.2.2'             # ruby version you are using...
+# set :rvm_ruby_string, '2.2.2'            # ruby version you are using...
 set :rvm_ruby_version, '2.2.2'
 # server "45.55.144.140", [:app, :web, :db, :primary => true]
 set :user, 'sweety'
@@ -52,6 +52,16 @@ namespace :db do
     end
     #run "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
   end
+  task :bundle_list do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, "list"
+        end
+      end
+    end
+  end
+  after "deploy", "db:bundle_list"
   after "deploy", "db:copy_database_file"
 end
 
