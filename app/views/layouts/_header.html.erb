@@ -1,0 +1,23 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to 'Magazine', root_path, class: 'navbar-brand' %>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %>
+          <%= content_tag :li, link_to( 'Articles', articles_path), class: "#{ 'active' if controller_name == 'tasks' }" -%>
+          <%#= content_tag :li, link_to( 'Edit Profile', edit_profile_path), class: "#{ 'active' if current_page?(edit_profile_path)}" %>
+          <%= content_tag :li, link_to( "Log out (#{current_user.email})", destroy_user_session_path, method: :delete) %>
+        <% else %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</div>
