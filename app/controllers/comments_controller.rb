@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_article
+  before_filter :require_permission, only: :destroy
 
   def new
     @comment = Comment.new(parent_id: params[:parent_id])
@@ -38,6 +39,14 @@ class CommentsController < ApplicationController
 
   def set_article
     @article = Article.find(params[:article_id])
+  end
+
+  def require_permission
+    @comment = Comment.find(params[:id])
+    if current_user != @comment.user
+      @comment.errors.add(:base,'You are not authorized to delete comment.')
+      render 'destroy.js.erb'
+    end
   end
 
   def comment_params
