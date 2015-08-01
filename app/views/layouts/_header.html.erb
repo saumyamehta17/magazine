@@ -10,8 +10,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if user_signed_in? %>
-          <%= content_tag :li, link_to( 'Articles', articles_path), class: "#{ 'active' if controller_name == 'tasks' }" -%>
-          <%#= content_tag :li, link_to( 'Edit Profile', edit_profile_path), class: "#{ 'active' if current_page?(edit_profile_path)}" %>
+          <%= content_tag :li, link_to( 'New Article', new_article_path), class: "#{ 'active'}" -%>
           <%= content_tag :li, link_to( "Log out (#{current_user.email})", destroy_user_session_path, method: :delete) %>
         <% else %>
           <li><%= link_to 'Log in', new_user_session_path %></li>

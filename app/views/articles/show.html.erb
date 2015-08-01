@@ -1,22 +1,14 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class='max_height'></div>
+<p title='Title'>
+  <%= @article.title %>  (By <strong><%= @article.author %></strong>)
 </p>
 
-<p>
-  <strong>Body:</strong>
+<p  title='Content'>
   <%= @article.body %>
 </p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
 
 <div id="comment-form">
   <%= render 'comments/form', comment: @article.comments.build, article: @article %>
