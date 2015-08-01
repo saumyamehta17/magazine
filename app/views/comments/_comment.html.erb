@@ -1,0 +1,15 @@
+<div class="comment navbar navbar-default">
+  <div class="created_at">
+    <%= comment.created_at.strftime("%B %d, %Y at %l:%M %P") %> &nbsp;&nbsp; | &nbsp;&nbsp;
+    <span> By - <%= comment.user.email %></span>
+  </div>
+  <div class='max_height'></div>
+  <div class="message">
+    <%= comment.desc %>
+  </div>
+  <div class='max_height'></div>
+  <div class="actions">
+    <%= link_to 'Reply', new_article_comment_path(@article, parent_id: comment), class: 'btn btn-default', remote: true %>
+    <%= link_to 'Destroy', article_comment_path(@article,comment), confirm: 'Are you sure', method: :delete, class: 'btn btn-default', remote: true %>
+  </div>
+</div> <br>

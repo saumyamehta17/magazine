@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+
+<div id="comment-form">
+  <%= render 'comments/form', comment: @article.comments.build, article: @article %>
+</div>
+
+<div id="comments-conainer">
+  <%= nested_comments(@comments) unless @comments.nil? %>
+</div>

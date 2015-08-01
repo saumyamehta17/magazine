@@ -1,0 +1,23 @@
+<%= simple_form_for( [article, comment], remote: true, role: "form") do |f| %>
+    <% if comment.errors.any? %>
+        <div id="error_explanation">
+          <h5><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h5>
+          <ul>
+            <% comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :desc, 'Comment' %><br>
+      <%= f.text_area :desc, class: 'form-control', rows: 4 %>
+    </div>
+    <br>
+    <%= f.hidden_field :parent_id %>
+
+    <div class="form-group">
+      <%= f.submit 'Save', class: 'btn btn-primary', data: {disable_with: 'Saving...'} %>
+    </div>
+<% end %>
+

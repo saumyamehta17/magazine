@@ -1,0 +1,7 @@
+<% if @comment.errors.present? %>
+$('#comment-form').html("<%=j render( 'comments/form', comment: @comment, article: @comment.article) %>");
+<% else %>
+$('.reply_modal').modal('hide');
+$('#comment-form').html("<%=j render( 'comments/form', comment: Comment.new, article: @article) %>");
+$('#comments-conainer').html("<%=j nested_comments(@comments) %>");
+<% end %>
