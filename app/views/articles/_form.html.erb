@@ -1,14 +1,9 @@
 <%= simple_form_for @article, :html => { :class => 'form-horizontal article_form' } do |f| %>
-    <div class="form-group">
-      <%= f.input :title, class: 'form-control' %>
-      <%= error_span(@article[:title]) %>
-      <div class='max_height'></div>
-      <%= f.input :body, class: 'form-control', label: 'Content' %>
-      <%= error_span(@article[:body]) %>
-      <div class='max_height'></div>
-      <%= f.input :author, class: 'form-control' %>
-      <%= error_span(@article[:author]) %>
-    </div>
+    <%= f.input :title, input_html: { class: 'form-control'}, placeholder: 'Title' %>
+    <div class='max_height'></div>
+    <%= f.input :body, input_html: { class: 'form-control', rows: '4' }, label: 'Content'%>
+    <div class='max_height'></div>
+    <%= f.input :author, input_html: { class: 'form-control'} %>
     <div class='max_height'></div>
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

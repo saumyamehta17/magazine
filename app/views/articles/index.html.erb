@@ -1,6 +1,6 @@
 <% @articles.each do |article| %>
   <h3><%= article.title %></h3>(By: <%= article.author %>)<br>
-  <%= truncate(article.body,length: 50) %>
+  <%= truncate(article.body,length: 500) %>
     <%= link_to 'show more', article %>
 <% end %>
 <div class='max_height'></div>

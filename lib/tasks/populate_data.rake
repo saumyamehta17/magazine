@@ -7,7 +7,7 @@ namespace :db do
     Article.populate 10 do |art|
       art.user_id = User.first.id
       art.title = Faker::Name.title
-      art.body = Faker::Lorem.paragraph
+      art.body = Faker::Lorem.paragraphs(4)
       art.author = Faker::Name.name
     end
   end
