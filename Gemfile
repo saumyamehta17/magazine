@@ -44,6 +44,12 @@ gem 'ancestry'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :development do
+  gem 'capistrano', '~> 3.4.0', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-faster-assets', '~> 1.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
